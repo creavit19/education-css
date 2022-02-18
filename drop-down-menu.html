@@ -1,0 +1,162 @@
+<!--
+  Выпадающее многоуровневое меню без js
+-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выпадающее меню</title>
+
+  <style>
+
+    body {
+      font-family: arial;
+      font-size: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .wrapper {
+      margin: 50px auto;
+      width: 800px;
+    }
+
+    p {
+      margin: 0 auto;
+      padding: 0;
+      width:800px;
+    }
+
+    nav {
+      padding: 0;
+      width: 100%;
+      height: 2.1em;
+    }
+
+    nav a {
+      display: block;
+      padding: 0.4em 0;
+      border: 0.16em solid #98e20d;
+      background-color: green;
+      font-weight: bold;
+      width: 7.8em;
+      height: 1.2em;
+      text-align: center;
+      text-decoration: none;
+      color: #e2e200;
+    }
+
+    nav li:hover > a {
+      background-color: #46b92c;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav > ul > li:not(:last-child) > a {
+      border-right: none;
+    }
+
+    nav a + ul > li:not(:last-child) > a {
+      border-bottom: none;
+    }
+
+    nav > ul > li {
+      float: left;
+    }
+
+    nav li ul {
+      display: none;
+    }
+
+    nav li:hover > ul {
+      display: block;
+      position: absolute;
+      top: 2.16em;
+      left: 0;
+    }
+
+    nav li li:hover > ul {
+      left: 7.96em;
+      top: 0;
+    }
+
+    nav li:last-child li:hover > ul {
+      right: 7.96em;
+    }
+
+  </style>
+
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">Категории</a>
+          <ul>
+            <li><a href="#">Мужское</a>
+              <ul>
+                <li><a href="#">Автомобили</a></li>
+                <li><a href="#">Мотоциклы</a></li>
+                <li><a href="#">Велосипеды</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Женское</a>
+              <ul>
+                <li><a href="#">Одежда</a></li>
+                <li><a href="#">Обувь</a></li>
+                <li><a href="#">Аксессуары</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Детям</a>
+              <ul>
+                <li><a href="#">Игрушки</a></li>
+                <li><a href="#">Для школы</a></li>
+                <li><a href="#">Одежда</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="#">О нас</a>
+          <ul>
+            <li><a href="#">Миссия</a></li>
+            <li><a href="#">Достижения</a>
+              <ul>
+                <li><a href="#">Успех</a></li>
+                <li><a href="#">Творчество</a></li>
+                <li><a href="#">Влияние</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Стремления</a>
+              <ul>
+                <li><a href="#">Цели</a></li>
+                <li><a href="#">Ценности</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+	<p>
+		Текст страницы.....
+	</p>
+</body>
+</html>
