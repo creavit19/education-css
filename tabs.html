@@ -1,0 +1,120 @@
+<!--
+  Переключающиеся вкладки без js
+-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Табы без js</title>
+  <style>
+
+    body {
+      font-family: arial;
+      font-size: 25px;
+      margin: 0;
+      padding: 0;
+      color: #474747;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    .wrapper {
+      margin: 0 auto;
+      width: 900px;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tabs label {
+      position: relative;
+      text-align: center;
+      padding: 0.3em;
+      margin: 0 0.2em;
+      border-top-left-radius: 0.5em;
+      border-top-right-radius: 0.5em;
+      line-height: 1.5em;
+      border: 0.1em solid #474747;
+    }
+
+    .tabs label:hover {
+      cursor: pointer;
+      color: #550000;
+    }
+
+    /* input нужно скрыть, но применять display:none нельзя, иначе не будет работать*/
+    .tabs input[type="radio"] {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      position: absolute;
+      z-index: -1000;
+    }
+
+    .tabs input:checked + label::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      border-bottom: 0.3em solid #fff;
+      bottom: -0.2em;
+      left: 0;
+    }
+
+    .tabs .inset {
+      grid-column-start: 1;
+      grid-column-end: 5;
+      display: none;
+      order: 100;
+      border: 0.1em solid #474747;
+      padding: 1em;
+      margin: -0.1em;
+      height: 5em;
+    }
+
+    .tabs input:checked + label + .inset {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Пример реализации табов без JS</h1>
+    <div class="tabs">
+      <input type="radio" name="select" id="tab01" checked>
+      <label for="tab01">Товар</label>
+      <div class="inset">
+        <p>Страница товара...</p>
+      </div>
+      <input type="radio" name="select" id="tab02">
+      <label for="tab02">Описание</label>
+      <div class="inset">
+        <p>Описание товара...</p>
+      </div>
+      <input type="radio" name="select" id="tab03">
+      <label for="tab03">Характеристики</label>
+      <div class="inset">
+        <p>Характеристики товара...</p>
+      </div>
+      <input type="radio" name="select" id="tab04">
+      <label for="tab04">Отзывы</label>
+      <div class="inset">
+        <p>Отзывы о товаре...</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
