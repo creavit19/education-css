@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мобильное меню без js</title>
+  <style>
+    
+    body {
+      font-family: sans-serif;
+      font-size: 25px;
+      color: #474747;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 1.2em;
+      text-align: center;
+      margin-bottom: 0.5em;
+    }
+
+    .wrapper {
+      margin: 0 auto;
+      width: 300px;
+    }
+
+    nav.mobile-menu a {
+      text-decoration: none;
+      color: #474747;
+    }
+
+    nav.mobile-menu .accordion {
+      clear: both;
+    }
+
+    nav.mobile-menu a:hover {
+      text-decoration: underline;
+      color: #4e9bff;
+    }
+
+    nav.mobile-menu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav.mobile-menu .accordion label {
+      position: relative;
+      display: block;
+      padding: 0 0.5em;
+      background-color: #d3d3d3;
+    }
+
+    nav.mobile-menu .accordion label::after {
+      position: absolute;
+      content: '\27A4';
+      font-weight: bold;
+      font-size: 1.25em;
+      right: 0.2em;
+      top: 0;
+      cursor: pointer;
+      transition: transform 0.5s;
+    }
+    
+    nav.mobile-menu .accordion input:checked + label::after {
+      transform: rotate(90deg);
+    }
+
+    nav.mobile-menu .sub-items  li {
+      padding: 0 1.5em;
+    }
+
+    nav.mobile-menu .accordion input:first-child + label {
+      border-top: 0.1em solid #5e5e5e;
+    }
+
+    nav.mobile-menu input[type="checkbox"] {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      position: absolute;
+      z-index: -1000;
+    }
+
+    nav.mobile-menu .sub-items  li,
+    nav.mobile-menu .accordion label {
+      opacity: 0;
+      height: 0;
+      transition: height 0.5s, opacity 0.5s, padding 0.5s;
+      overflow: hidden;
+      border-left: 0.1em solid #5e5e5e;
+      border-right: 0.1em solid #5e5e5e;
+    }
+
+    nav.mobile-menu > input:checked + label + .accordion input:checked + label + .sub-items li,
+    nav.mobile-menu > input:checked + label + .accordion label {
+      padding-top: 0.2em;
+      padding-bottom: 0.2em;
+      opacity: 1;
+      height: 1.2em;
+      border-bottom: 0.1em solid #5e5e5e;
+    }
+
+    nav.mobile-menu .mobile-button {
+      position: relative;
+      float: right;
+      padding: 0.5em 0.5em 0.5em 2em;
+      border: 0.1em solid #5e5e5e;
+      margin: 1em 0;
+      cursor: pointer;
+    }
+
+    nav.mobile-menu label.mobile-button::before,
+    nav.mobile-menu label.mobile-button::after,
+    nav.mobile-menu label.mobile-button span::before {
+      position: absolute;
+      content: '';
+      display: block;
+      height: 0.08em;
+      width: 1em;
+      left: 0.5em;
+      top: 50%;
+      background-color: #5e5e5e;
+      transition: all, ease, 0.5s;
+    }
+
+    nav.mobile-menu label.mobile-button::before {
+      transform: translateY(-0.37em);
+    }
+
+    nav.mobile-menu label.mobile-button::after {
+      transform: translateY(0.37em);
+    }
+
+    nav.mobile-menu input:checked + label.mobile-button::before {
+      transform: rotate(45deg);
+    }
+
+    nav.mobile-menu input:checked + label.mobile-button::after {
+      transform: rotate(-45deg);
+    }
+
+    nav.mobile-menu input:checked + label.mobile-button span::before {
+      opacity: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Мобильное меню на CSS без JS</h1>
+  <div class="wrapper">
+    <nav class="mobile-menu">
+      <input type="checkbox" id="m-button">
+      <label class="mobile-button" for="m-button"><span>Меню</span></label>
+      <div class="accordion">
+        <input type="checkbox" id="item01">
+        <label for="item01"><a href="#">Каталог</a></label>
+        <ul class="sub-items">
+          <li><a href="#">Категории</a></li>
+          <li><a href="#">Бренды</a></li>
+          <li><a href="#">Акции</a></li>
+        </ul>
+        <input type="checkbox" id="item02">
+        <label for="item02"><a href="#">О нас</a></label>
+        <ul class="sub-items">
+          <li><a href="#">История</a></li>
+          <li><a href="#">Достижения</a></li>
+          <li><a href="#">Успех</a></li>
+        </ul>
+        <input type="checkbox" id="item03">
+        <label for="item03"><a href="#">Блог</a></label>
+        <ul class="sub-items">
+          <li><a href="#">Новости</a></li>
+          <li><a href="#">Польза</a></li>
+          <li><a href="#">Красота</a></li>
+          <li><a href="#">Экология</a></li>
+          <li><a href="#">Производство</a></li>
+        </ul>
+        <input type="checkbox" id="item04">
+        <label for="item04"><a href="#">Контакты</a></label>
+        <ul class="sub-items">
+          <li><a href="#">Адреса</a></li>
+          <li><a href="#">Обратная связь</a></li>
+        </ul>
+      </div>
+    </nav> 
+  </div>
+</body>
+</html>
