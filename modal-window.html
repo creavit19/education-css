@@ -1,0 +1,221 @@
+<!--
+  Простое модальное окно без js
+-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    #modal {
+      font-family: sans-serif;
+      font-size: 22.5pt;
+      text-align: center;
+    }
+
+    #modal input[type="checkbox"] {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      position: absolute;
+      z-index: -1000;
+    }
+
+    #modal, #modal .modal-substrat, #modal .modal-layout {
+      visibility: hidden;
+      position: fixed;
+      margin: 0;
+      padding: 0;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    #modal .modal-layout > label {
+      display: block;
+    }
+
+    #modal .modal-substrat {
+      background-color: #000;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    #modal, #modal .modal-layout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      z-index: 9999;
+    }
+
+    #modal .modal {
+      display: flex;
+      flex-direction: column ;
+      align-items: stretch;
+      justify-content: space-between;
+      position: relative;
+      background-color: #fff;
+      width: 12em;
+      padding: 0.7em;
+      border-radius: 0.5em;
+      border: 0.05em solid #999;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    #modal .modal-content {
+      color: #4A4A4A;
+      line-height: 1.5;
+      padding: 0.4em 0.5em 1.2em 0.5em;
+    }
+
+    #modal .modal-close {
+      font-size: 1.5em;
+      color: #999;
+      display: block;
+      position: absolute;
+      right: 0.05em;
+      top: -0.24em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #modal .modal-close:hover {
+      color: #8ebebf;
+    }
+
+    #modal .modal-footer {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-around;
+      margin-bottom: 0.2em;
+    }
+
+    #modal .modal-ok {
+      font-size: 0.7em;
+      width: 45.5%;
+      border: none;
+      border-radius: 0.238em;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+      color: white;
+      padding: .4em;
+      cursor: pointer;
+      user-select: none;
+      transition: box-shadow hover .3s ease-out;
+    }
+
+    #modal .modal-ok {
+      background-color: #A23955;
+    }
+
+    #modal .modal-ok:hover {
+      background-color: #D16884;
+      box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14),0 1px 7px 0 rgba(0,0,0,0.12),0 3px 1px -1px rgba(0,0,0,0.2);
+    }
+    
+    #modal input:checked + .modal-layout {
+      visibility: visible;
+    }
+
+    #modal input:checked + .modal-layout .modal-substrat {
+      visibility: visible;
+      opacity: 0.6;
+    }
+
+    #modal input:checked + .modal-layout .modal {
+      visibility: visible;
+    }
+
+    .main-button {
+      display: block;
+      padding: 0.2em 0.7em;
+      color: #278013;
+      border: 0.1em solid #278013;
+      background-color: #e3e615;
+      border-radius: 0.5em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .main-button:hover {
+      background-color: #f1f516;
+      color: #21670f;
+      border-color: #21670f;
+    }
+
+    .modal-link {
+      color: #ad09bc;
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+      cursor: pointer;
+    }
+
+    .modal-link:hover {
+      color: #0099e5;
+      text-decoration-style: solid;
+    }
+
+    body {
+      font-family: sans-serif;
+      font-size: 25px;
+      color: #474747;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+
+    .wrapper {
+      margin: 0 auto;
+      width: calc ( 100% - 2em );
+      max-width: 800px;
+      padding: 1em;
+    }
+
+    .header {
+      display: flex;
+      justify-content: right;
+    }
+
+    h1 {
+      font-size: 1.2em;
+      text-align: center;
+      margin-bottom: 0.5em;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="modal">
+    <input type="checkbox" id="m-check">
+    <div class="modal-layout">
+      <label for="m-check"><div class="modal-substrat"></div></label>
+      <div class="modal">
+        <label class="modal-close" for="m-check">×</label>
+        <div class="modal-content">
+          <p>Сообщение в модальном окне...</p>
+          <p>Также здесь может быть форма...</p>
+        </div>
+        <div class="modal-footer">
+          <label class="modal-ok" for="m-check">Ok</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="header">
+      <label class="main-button" for="m-check">Открыть модальное окно</label>
+    </div>
+    <h1>Реализация модального окна без JS</h1>
+    <p>Для вызова модального окна также может быть <label class="modal-link" for="m-check">ссылка</label> в тексте.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis veniam ad illum reprehenderit porro vero magni distinctio laudantium sapiente molestiae, unde, at veritatis beatae eaque consequatur. Nisi, facilis? Voluptas, ad!</p>
+  </div>
+  
+</body>
+</html>
